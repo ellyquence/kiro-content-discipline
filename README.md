@@ -1,6 +1,6 @@
 # Kiro Content Discipline Pack
 
-A comprehensive Kiro IDE configuration for **award-winning content creation**. Enforces quality gates, voice consistency, SEO best practices, and readability standards for blog posts and long-form content.
+A comprehensive Kiro IDE configuration for **content creation**. Enforces quality gates, voice consistency, SEO best practices, and readability standards for blog posts and long-form content.
 
 ## What This Pack Enforces
 
