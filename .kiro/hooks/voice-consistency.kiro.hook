@@ -1,0 +1,69 @@
+name: Voice & Tone Consistency Check
+description: Detects voice and tone drift from brand guidelines
+
+when:
+  type: fileEdit
+  patterns:
+    - "content/**/*.md"
+    - "drafts/**/*.md"
+    - "posts/**/*.md"
+    - "blog/**/*.md"
+
+then:
+  type: askAgent
+  prompt: |
+    A content file has been edited. Please check for voice and tone consistency.
+
+    ## Voice Consistency Analysis
+
+    Review the content against these voice principles:
+
+    1. **Formality Level**
+       - Check for inconsistent formality shifts
+       - Flag jarring transitions between casual and formal
+       - Note any corporate jargon or buzzwords
+
+    2. **Point of View**
+       - Verify consistent use of "you" (second person)
+       - Flag inappropriate "I/we" overuse
+       - Check for passive constructions that distance the reader
+
+    3. **Word Choice**
+       - Flag buzzwords: utilize, leverage, synergy, paradigm, bandwidth
+       - Identify jargon used without explanation
+       - Note filler phrases: "in order to", "due to the fact that"
+
+    4. **Tone Markers**
+       - Count exclamation points (max 1 per section recommended)
+       - Check for excessive enthusiasm or flatness
+       - Identify any condescending or overly technical passages
+
+    5. **Active Voice**
+       - Flag passive constructions
+       - Suggest active alternatives
+
+    ## Output Format
+
+    ```
+    VOICE CONSISTENCY REPORT
+    ========================
+    Overall Consistency: [Consistent/Minor Issues/Needs Work]
+
+    Formality Check:
+    - [Finding]
+
+    Problematic Words/Phrases Found:
+    - Line [X]: "[phrase]" → Suggest: "[alternative]"
+    - Line [X]: "[phrase]" → Suggest: "[alternative]"
+
+    Tone Issues:
+    - [Issue with location]
+
+    Passive Voice Instances:
+    - Line [X]: "[passive phrase]" → "[active alternative]"
+
+    RECOMMENDATION: [Ready for review / Revise voice issues first]
+    ```
+
+    If voice is consistent, confirm with:
+    "✓ Voice consistency check passed. Content aligns with brand guidelines."

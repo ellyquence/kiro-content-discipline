@@ -1,0 +1,106 @@
+name: SEO & E-E-A-T Compliance Check
+description: Validates SEO best practices and E-E-A-T signals
+
+when:
+  type: fileEdit
+  patterns:
+    - "content/**/*.md"
+    - "drafts/**/*.md"
+    - "posts/**/*.md"
+    - "blog/**/*.md"
+
+then:
+  type: askAgent
+  prompt: |
+    A content file has been edited. Please perform an SEO and E-E-A-T compliance check.
+
+    ## SEO Analysis
+
+    Check the following:
+
+    1. **Title/Headline**
+       - Is there a clear H1?
+       - Character count (target: 50-60)
+       - Does it include the likely target keyword?
+
+    2. **Meta Content** (if present in frontmatter)
+       - Meta description length (target: 150-160 chars)
+       - Does description include keyword?
+       - Does it have a call-to-action?
+
+    3. **Heading Structure**
+       - Is there exactly one H1?
+       - Do H2s and H3s follow hierarchy (no skipping levels)?
+       - Are headings descriptive (not "Introduction" or "Part 1")?
+
+    4. **Keyword Placement**
+       - Is target keyword in first 100 words?
+       - Is it in at least one H2?
+       - Natural distribution throughout?
+
+    5. **Internal Links**
+       - Count of internal links (target: 3-5 minimum)
+       - Is anchor text descriptive?
+
+    6. **External Links**
+       - Are claims supported with external sources?
+       - Are sources authoritative?
+
+    ## E-E-A-T Signals
+
+    Check for:
+
+    1. **Experience**
+       - First-hand experience language ("I tested", "In our experience")
+       - Original examples or case studies
+
+    2. **Expertise**
+       - Author attribution/byline
+       - Credentials mentioned
+       - Depth of coverage
+
+    3. **Authoritativeness**
+       - Citations to authoritative sources
+       - Data and statistics referenced
+
+    4. **Trustworthiness**
+       - Sources for factual claims
+       - Disclosures if needed
+       - Publication/update dates
+
+    ## Output Format
+
+    ```
+    SEO & E-E-A-T COMPLIANCE REPORT
+    ===============================
+
+    TITLE CHECK
+    - H1 Present: [Yes/No]
+    - Character Count: [X] [✓/⚠]
+    - Keyword Present: [Yes/No/Unknown]
+
+    STRUCTURE CHECK
+    - Single H1: [Yes/No]
+    - Proper Hierarchy: [Yes/No]
+    - Issues: [List any]
+
+    LINK CHECK
+    - Internal Links: [X] [✓/⚠ if <3]
+    - External Sources: [X]
+    - Broken/Missing Anchors: [List]
+
+    E-E-A-T SIGNALS
+    - Experience Indicators: [Found/Missing]
+    - Author Attribution: [Present/Missing]
+    - Source Citations: [X found]
+    - Trust Signals: [Present/Missing]
+
+    OVERALL STATUS: [PASS/NEEDS IMPROVEMENT]
+
+    ACTION ITEMS:
+    1. [Specific action needed]
+    2. [Specific action needed]
+    ```
+
+    If all checks pass:
+    "✓ SEO & E-E-A-T compliance check passed."

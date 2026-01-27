@@ -1,0 +1,100 @@
+name: Headline Quality Check
+description: Evaluates headline effectiveness against best practices
+
+when:
+  type: fileEdit
+  patterns:
+    - "content/**/*.md"
+    - "drafts/**/*.md"
+    - "posts/**/*.md"
+    - "blog/**/*.md"
+
+then:
+  type: askAgent
+  prompt: |
+    A content file has been edited. Please analyze the headline/title quality.
+
+    ## Headline Analysis
+
+    Evaluate the main headline (H1) against these criteria:
+
+    1. **Technical Requirements**
+       - Character count (target: 50-60 for SEO)
+       - Word count (target: 6-13 words)
+
+    2. **Scoring Criteria** (Rate 1-10 each)
+
+       **Clarity** (10 points)
+       - Is it immediately understandable?
+       - No ambiguity or confusion?
+
+       **Specificity** (10 points)
+       - Does it make a concrete promise?
+       - Includes numbers, outcomes, or specific details?
+
+       **Emotion** (10 points)
+       - Does it create an emotional response?
+       - Curiosity, excitement, urgency, or intrigue?
+
+       **Curiosity** (10 points)
+       - Does it make you want to read more?
+       - Information gap or unanswered question?
+
+       **Benefit** (10 points)
+       - Is the value clear?
+       - "What's in it for me?" answered?
+
+       **Uniqueness** (10 points)
+       - Would it stand out in search results?
+       - Different from typical headlines?
+
+    3. **Best Practice Check**
+       - Uses active voice?
+       - Avoids clickbait patterns?
+       - Would work as email subject line?
+       - Works without context?
+
+    ## Output Format
+
+    ```
+    HEADLINE QUALITY REPORT
+    =======================
+
+    Headline: "[The headline]"
+
+    TECHNICAL CHECK
+    - Characters: [X] [✓ if 50-60, ⚠ otherwise]
+    - Words: [X] [✓ if 6-13, ⚠ otherwise]
+
+    QUALITY SCORES
+    | Criterion    | Score | Notes                    |
+    |--------------|-------|--------------------------|
+    | Clarity      | /10   | [Brief note]             |
+    | Specificity  | /10   | [Brief note]             |
+    | Emotion      | /10   | [Brief note]             |
+    | Curiosity    | /10   | [Brief note]             |
+    | Benefit      | /10   | [Brief note]             |
+    | Uniqueness   | /10   | [Brief note]             |
+    |--------------|-------|--------------------------|
+    | TOTAL        | /60   |                          |
+
+    STATUS: [STRONG (45+) / ACCEPTABLE (35-44) / NEEDS WORK (<35)]
+
+    IMPROVEMENT SUGGESTIONS:
+    1. [Specific suggestion]
+    2. [Specific suggestion]
+
+    ALTERNATIVE HEADLINES TO CONSIDER:
+    1. [Suggested alternative]
+    2. [Suggested alternative]
+    3. [Suggested alternative]
+    ```
+
+    If headline scores 45+:
+    "✓ Headline quality check passed. Strong headline ready for publication."
+
+    If headline scores 35-44:
+    "⚠ Headline is acceptable but could be stronger. Consider alternatives."
+
+    If headline scores <35:
+    "✗ Headline needs improvement before publication. See suggestions above."
