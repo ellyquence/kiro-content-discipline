@@ -5,7 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2025-01-27
+## [1.0.1] - 2026-01-27
+
+### Fixed
+- **BREAKING**: Converted all hooks from YAML to JSON format
+  - Kiro IDE requires hooks to be valid JSON, not YAML
+  - This fixes "invalid JSON syntax" errors when viewing Agent Hooks
+  - All 5 hooks updated: readability-check, voice-consistency, seo-compliance, headline-quality, content-brief-check
+
+### Note for existing users
+If you installed v1.0.0, re-run the install script or manually copy the updated `.kiro/hooks/` directory.
+
+## [1.0.0] - 2026-01-27
 
 ### Added
 - Initial release of Kiro Content Discipline Pack
@@ -46,4 +57,5 @@ Based on best practices from:
 - Orbit Media headline formulas
 - Siteimprove QA framework
 
+[1.0.1]: https://github.com/ellyquence/kiro-content-discipline/releases/tag/v1.0.1
 [1.0.0]: https://github.com/ellyquence/kiro-content-discipline/releases/tag/v1.0.0
