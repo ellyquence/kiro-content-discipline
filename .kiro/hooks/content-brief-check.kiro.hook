@@ -1,84 +1,17 @@
-name: Content Brief Compliance Check
-description: Ensures content follows the approved brief requirements
-
-when:
-  type: fileEdit
-  patterns:
-    - "content/**/*.md"
-    - "drafts/**/*.md"
-    - "posts/**/*.md"
-    - "blog/**/*.md"
-
-then:
-  type: askAgent
-  prompt: |
-    A content file has been edited. Check if there's an associated content brief and verify compliance.
-
-    ## Brief Compliance Check
-
-    If a brief is linked or referenced in the content (check frontmatter or comments):
-
-    1. **Word Count**
-       - What's the target word count from the brief?
-       - What's the current word count?
-       - Is it within 10% of target?
-
-    2. **Structure Framework**
-       - What framework was specified (AIDA, PAS, How-To, etc.)?
-       - Does the content follow that framework?
-
-    3. **Required Elements**
-       - Check for required elements from brief:
-         - [ ] Statistics/data with sources
-         - [ ] Expert quotes (if required)
-         - [ ] Original examples
-         - [ ] Screenshots/visuals (if required)
-         - [ ] Internal links to specified pages
-         - [ ] Case study (if required)
-
-    4. **Keyword Coverage**
-       - Is the primary keyword present and appropriately used?
-       - Are secondary keywords included?
-
-    5. **CTA Alignment**
-       - Does the CTA match what was specified in the brief?
-       - Is it placed appropriately?
-
-    6. **Audience Alignment**
-       - Does the content address the specified persona?
-       - Does it match the specified awareness level?
-
-    ## Output Format
-
-    ```
-    BRIEF COMPLIANCE REPORT
-    =======================
-
-    Brief Status: [Linked/Not Found]
-    Brief Location: [Path if found]
-
-    COMPLIANCE CHECK
-    | Requirement        | Brief Spec      | Actual          | Status |
-    |--------------------|-----------------|-----------------|--------|
-    | Word Count         | [X]             | [Y]             | ✓/⚠    |
-    | Structure          | [Framework]     | [Matches/No]    | ✓/⚠    |
-    | Primary Keyword    | [Keyword]       | [Found/Missing] | ✓/⚠    |
-    | Internal Links     | [Required]      | [Found]         | ✓/⚠    |
-    | CTA                | [Specified]     | [Matches/No]    | ✓/⚠    |
-
-    MISSING REQUIRED ELEMENTS:
-    - [Element 1]
-    - [Element 2]
-
-    OVERALL COMPLIANCE: [Compliant/Partially Compliant/Non-Compliant]
-
-    ACTION ITEMS:
-    1. [Specific action to achieve compliance]
-    2. [Specific action to achieve compliance]
-    ```
-
-    If no brief is found:
-    "⚠ No content brief linked. Recommend creating and linking a brief before proceeding."
-
-    If fully compliant:
-    "✓ Content is compliant with approved brief."
+{
+  "name": "Content Brief Compliance",
+  "description": "Ensures content follows the approved brief requirements",
+  "when": {
+    "type": "fileEdit",
+    "patterns": [
+      "content/**/*.md",
+      "drafts/**/*.md",
+      "posts/**/*.md",
+      "blog/**/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A content file has been edited. Check brief compliance.\n\n## Brief Check\n\nLook for linked brief in frontmatter or comments, then verify:\n\n1. **Word Count** - Target vs actual (within 10%?)\n\n2. **Structure** - Framework specified followed (AIDA, PAS, How-To)?\n\n3. **Required Elements** - Stats, quotes, examples, links per brief?\n\n4. **Keywords** - Primary and secondary present?\n\n5. **CTA** - Matches brief specification?\n\n## Output Format\n\nBRIEF COMPLIANCE REPORT\n=======================\nBrief: [Linked/Not Found]\n\nWord Count: [target] vs [actual] [✓/⚠]\nStructure: [✓/⚠]\nKeywords: [✓/⚠]\nCTA: [✓/⚠]\n\nMissing elements if any.\n\nSTATUS: [Compliant/Needs Work]\n\nIf no brief: Recommend creating one first."
+  }
+}

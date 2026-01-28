@@ -1,70 +1,17 @@
-name: Readability Quality Check
-description: Validates content meets readability standards before approval
-
-when:
-  type: fileEdit
-  patterns:
-    - "content/**/*.md"
-    - "drafts/**/*.md"
-    - "posts/**/*.md"
-    - "blog/**/*.md"
-
-then:
-  type: askAgent
-  prompt: |
-    A content file has been edited. Please perform a readability analysis.
-
-    ## Readability Check
-
-    Analyze the content and evaluate:
-
-    1. **Sentence Length**
-       - Calculate average sentence length
-       - Flag any sentences over 25 words
-       - Target: ≤20 words average
-
-    2. **Paragraph Length**
-       - Count sentences per paragraph
-       - Flag paragraphs with >5 sentences
-       - Target: 2-4 sentences per paragraph
-
-    3. **Passive Voice Detection**
-       - Identify passive voice constructions
-       - Calculate percentage of passive sentences
-       - Target: <10% passive voice
-
-    4. **Complex Words**
-       - Flag words with 3+ syllables that have simpler alternatives
-       - Suggest replacements
-
-    5. **Reading Level Estimate**
-       - Estimate Flesch-Kincaid Grade Level
-       - Target: ≤ Grade 8
-
-    ## Output Format
-
-    Provide a summary:
-    ```
-    READABILITY REPORT
-    ==================
-    Estimated Grade Level: [X]
-    Average Sentence Length: [X] words
-    Passive Voice: [X]%
-    Long Sentences (>25 words): [X]
-    Long Paragraphs (>5 sentences): [X]
-
-    STATUS: [PASS/NEEDS IMPROVEMENT]
-
-    Issues Found:
-    - [Issue 1 with location]
-    - [Issue 2 with location]
-
-    Suggested Fixes:
-    - [Specific fix 1]
-    - [Specific fix 2]
-    ```
-
-    If readability passes all checks, confirm with:
-    "✓ Readability check passed. Content meets Grade 8 standard."
-
-    If issues found, provide specific locations and suggested fixes.
+{
+  "name": "Readability Quality Check",
+  "description": "Validates content meets readability standards before approval",
+  "when": {
+    "type": "fileEdit",
+    "patterns": [
+      "content/**/*.md",
+      "drafts/**/*.md",
+      "posts/**/*.md",
+      "blog/**/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A content file has been edited. Please perform a readability analysis.\n\n## Readability Check\n\nAnalyze the content and evaluate:\n\n1. **Sentence Length** - Calculate average sentence length, flag any over 25 words. Target: ≤20 words average.\n\n2. **Paragraph Length** - Count sentences per paragraph, flag >5 sentences. Target: 2-4 sentences.\n\n3. **Passive Voice Detection** - Identify passive constructions, calculate percentage. Target: <10%.\n\n4. **Complex Words** - Flag words with 3+ syllables that have simpler alternatives.\n\n5. **Reading Level Estimate** - Estimate Flesch-Kincaid Grade Level. Target: ≤ Grade 8.\n\n## Output Format\n\nREADABILITY REPORT\n==================\nEstimated Grade Level: [X]\nAverage Sentence Length: [X] words\nPassive Voice: [X]%\nLong Sentences (>25 words): [X]\nLong Paragraphs (>5 sentences): [X]\n\nSTATUS: [PASS/NEEDS IMPROVEMENT]\n\nIf issues found, list specific locations and suggested fixes."
+  }
+}
