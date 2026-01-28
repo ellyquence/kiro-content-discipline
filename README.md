@@ -38,11 +38,20 @@ A comprehensive Kiro IDE configuration for **content creation**. Enforces qualit
 - Power word banks
 - A/B testing templates
 
+## Documentation
+
+| Guide | Description |
+|-------|-------------|
+| [USAGE.md](USAGE.md) | **Start here** — Full workflow guide, talking to Kiro, templates reference |
+| [CUSTOMIZATION.md](CUSTOMIZATION.md) | Adjust standards, override rules, add hooks, create templates |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute to this pack |
+| [CHANGELOG.md](CHANGELOG.md) | Version history and updates |
+
 ## Quick Start
 
 ```bash
 # Clone this repo
-git clone <this-repo-url> ~/kiro-content-discipline
+git clone https://github.com/ellyquence/kiro-content-discipline.git ~/kiro-content-discipline
 
 # Install to your content project
 cd /path/to/your/content-project
