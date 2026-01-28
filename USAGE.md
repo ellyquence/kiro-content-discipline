@@ -29,6 +29,46 @@ Open your content project folder in Kiro IDE. The steering files activate automa
 
 ---
 
+## Vibe Mode vs Spec Mode
+
+Kiro has two modes. Use the right one for each task:
+
+| Mode | Best For | Why |
+|------|----------|-----|
+| **Vibe** | Writing drafts, brainstorming headlines, finding voice | Creative, conversational flow |
+| **Spec** | Creating briefs, building outlines, running checklists | Structured, follows templates precisely |
+
+### When to Use Each
+
+**Use Vibe mode when:**
+- Writing actual prose/content
+- Brainstorming headline variations
+- Exploring ideas and angles
+- Getting feedback on voice and tone
+
+**Use Spec mode when:**
+- Generating a formal brief from template
+- Building a structured outline
+- Running quality gate checklists
+- Doing SEO compliance review
+
+### Recommended Workflow
+
+1. **Start in Vibe** — Plan loosely, brainstorm, write drafts
+2. **Switch to Spec** — Formalize brief, run checklists, structured review
+3. **Back to Vibe** — Polish prose, refine voice
+4. **Finish in Spec** — Final quality gate checklist
+
+### The Hooks Work in Both Modes
+
+Regardless of mode, when you save a content file, the automated hooks fire and check:
+- Readability
+- Voice consistency
+- SEO compliance
+- Headline quality
+
+---
+
 ## The Content Workflow
 
 ### Phase 1: Plan (Before Writing)
