@@ -150,117 +150,87 @@ We are the experts. Speak with confidence.
 
 ### Hook File Format
 
+> **Important:** Hooks are project-only. Unlike steering files, hooks do NOT load from global locations. You must copy hooks to each project's `.kiro/hooks/` folder.
+
 Create `.kiro/hooks/my-custom-hook.kiro.hook`:
 
-```yaml
-name: My Custom Check
-description: What this hook validates
-
-when:
-  type: fileEdit          # Trigger type
-  patterns:
-    - "content/**/*.md"   # File patterns to match
-
-then:
-  type: askAgent
-  prompt: |
-    Your prompt to the agent here.
-
-    Check for:
-    1. [Specific thing to check]
-    2. [Another thing to check]
-
-    Output format:
-    [How you want results formatted]
+```json
+{
+  "enabled": true,
+  "name": "My Custom Check",
+  "description": "What this hook validates",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["content/**/*.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Your prompt to the agent here.\n\nCheck for:\n1. [Specific thing to check]\n2. [Another thing to check]\n\nOutput format:\n[How you want results formatted]"
+  }
+}
 ```
+
+**Required fields:**
+- `enabled`: Must be `true` for hook to activate
+- `version`: Use `"1"`
+- `when.type`: `fileEdited`, `fileCreated`, `fileDeleted`, `promptSubmit`, or `agentStop`
 
 ### Example: Brand Mention Check
 
-```yaml
-name: Brand Mention Consistency
-description: Ensures brand names are capitalized correctly
-
-when:
-  type: fileEdit
-  patterns:
-    - "content/**/*.md"
-
-then:
-  type: askAgent
-  prompt: |
-    Check this content for brand name consistency.
-
-    Our brand names (correct capitalization):
-    - Kiro (not KIRO, kiro)
-    - Claude (not CLAUDE, claude)
-    - GitHub (not Github, github)
-
-    Flag any incorrect capitalizations with line numbers.
-
-    Output:
-    - If all correct: "✓ Brand names consistent"
-    - If issues: List each with line number and correction
+```json
+{
+  "enabled": true,
+  "name": "Brand Mention Consistency",
+  "description": "Ensures brand names are capitalized correctly",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["content/**/*.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check this content for brand name consistency.\n\nOur brand names (correct capitalization):\n- Kiro (not KIRO, kiro)\n- Claude (not CLAUDE, claude)\n- GitHub (not Github, github)\n\nFlag any incorrect capitalizations with line numbers.\n\nOutput:\n- If all correct: \"✓ Brand names consistent\"\n- If issues: List each with line number and correction"
+  }
+}
 ```
 
 ### Example: Competitor Mention Alert
 
-```yaml
-name: Competitor Mention Alert
-description: Flags mentions of competitors for review
-
-when:
-  type: fileEdit
-  patterns:
-    - "content/**/*.md"
-
-then:
-  type: askAgent
-  prompt: |
-    Scan for mentions of these competitors:
-    - Cursor
-    - Copilot
-    - Windsurf
-    - Cody
-
-    If found, flag for review (not an error, just awareness).
-
-    Output:
-    - Competitor: [name]
-    - Line: [number]
-    - Context: [surrounding text]
-    - Tone check: [positive/negative/neutral]
+```json
+{
+  "enabled": true,
+  "name": "Competitor Mention Alert",
+  "description": "Flags mentions of competitors for review",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["content/**/*.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Scan for mentions of these competitors:\n- Cursor\n- Copilot\n- Windsurf\n- Cody\n\nIf found, flag for review (not an error, just awareness).\n\nOutput:\n- Competitor: [name]\n- Line: [number]\n- Context: [surrounding text]\n- Tone check: [positive/negative/neutral]"
+  }
+}
 ```
 
 ### Example: CTA Presence Check
 
-```yaml
-name: CTA Presence Check
-description: Ensures every post has a clear call-to-action
-
-when:
-  type: fileEdit
-  patterns:
-    - "content/**/*.md"
-
-then:
-  type: askAgent
-  prompt: |
-    Check if this content has a clear call-to-action (CTA).
-
-    Valid CTAs include:
-    - Subscribe prompts
-    - Links to related content
-    - Download/signup invitations
-    - Social share requests
-    - Comment invitations
-
-    Output:
-    - CTA Found: Yes/No
-    - CTA Type: [type]
-    - CTA Location: [beginning/middle/end]
-    - CTA Clarity: [clear/vague/missing]
-
-    If no CTA found, suggest appropriate options based on content.
+```json
+{
+  "enabled": true,
+  "name": "CTA Presence Check",
+  "description": "Ensures every post has a clear call-to-action",
+  "version": "1",
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["content/**/*.md"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check if this content has a clear call-to-action (CTA).\n\nValid CTAs include:\n- Subscribe prompts\n- Links to related content\n- Download/signup invitations\n- Social share requests\n- Comment invitations\n\nOutput:\n- CTA Found: Yes/No\n- CTA Type: [type]\n- CTA Location: [beginning/middle/end]\n- CTA Clarity: [clear/vague/missing]\n\nIf no CTA found, suggest appropriate options based on content."
+  }
+}
 ```
 
 ---
