@@ -2,7 +2,7 @@
   "name": "Voice Consistency Check",
   "description": "Detects voice and tone drift from brand guidelines",
   "when": {
-    "type": "fileEdit",
+    "type": "fileEdited",
     "patterns": [
       "content/**/*.md",
       "drafts/**/*.md",
@@ -13,5 +13,7 @@
   "then": {
     "type": "askAgent",
     "prompt": "A content file has been edited. Check for voice and tone consistency.\n\n## Voice Analysis\n\n1. **Formality** - Check for inconsistent shifts between casual and formal.\n\n2. **Point of View** - Verify consistent use of 'you' (second person).\n\n3. **Word Choice** - Flag buzzwords: utilize, leverage, synergy, paradigm. Note filler phrases.\n\n4. **Tone** - Count exclamation points (max 1 per section). Check for flatness or excess enthusiasm.\n\n5. **Active Voice** - Flag passive constructions, suggest active alternatives.\n\n## Output Format\n\nVOICE CONSISTENCY REPORT\n========================\nOverall: [Consistent/Minor Issues/Needs Work]\n\nProblematic phrases found with line numbers and suggestions.\n\nRECOMMENDATION: [Ready for review / Revise first]"
-  }
+  },
+  "enabled": true,
+  "version": "1"
 }

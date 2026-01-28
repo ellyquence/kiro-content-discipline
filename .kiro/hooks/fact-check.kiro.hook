@@ -2,7 +2,7 @@
   "name": "Fact Check with Sources",
   "description": "Validates factual claims have two credible references each",
   "when": {
-    "type": "fileEdit",
+    "type": "fileEdited",
     "patterns": [
       "content/**/*.md",
       "drafts/**/*.md",
@@ -13,5 +13,7 @@
   "then": {
     "type": "askAgent",
     "prompt": "A content file has been edited. Perform fact-checking on all assertions.\n\n## Fact Check Process\n\n1. **Identify Factual Claims** - Find all assertions that can be verified:\n   - Statistics and numbers\n   - Dates and timelines\n   - Product features or capabilities\n   - Technical specifications\n   - Quotes or attributions\n   - Historical facts\n   - Comparisons or rankings\n\n2. **Verify Each Claim** - For EVERY factual claim:\n   - Is it accurate?\n   - Can it be verified with credible sources?\n   - Is it current (not outdated)?\n\n3. **Source Requirements** - Each factual claim needs:\n   - Minimum 2 credible references\n   - Primary sources preferred (official docs, research papers, announcements)\n   - Secondary sources acceptable (reputable news, established blogs)\n   - Avoid: social media, forums, outdated sources (>2 years for tech)\n\n4. **Flag Issues**:\n   - Unverifiable claims\n   - Claims with only 1 source\n   - Potentially outdated information\n   - Misleading or exaggerated statements\n\n## Output Format\n\nFACT CHECK REPORT\n=================\nClaims Found: [X]\nVerified: [X]\nNeeds Sources: [X]\nUnverifiable: [X]\n\nDETAILED FINDINGS:\n\n[For each claim]\nCLAIM: \"[exact quote]\"\nLINE: [X]\nSTATUS: [Verified/Needs Sources/Unverifiable/Outdated]\nSOURCES FOUND: [list or NONE]\nRECOMMENDED SOURCES: [suggestions if needed]\n---\n\nACTION ITEMS:\n1. [Specific claim needing sources]\n2. [Specific claim to verify]\n\nSTATUS: [PASS - All claims verified / NEEDS WORK - Sources required]"
-  }
+  },
+  "enabled": true,
+  "version": "1"
 }

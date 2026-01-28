@@ -2,7 +2,7 @@
   "name": "Readability Quality Check",
   "description": "Validates content meets readability standards before approval",
   "when": {
-    "type": "fileEdit",
+    "type": "fileEdited",
     "patterns": [
       "content/**/*.md",
       "drafts/**/*.md",
@@ -13,5 +13,7 @@
   "then": {
     "type": "askAgent",
     "prompt": "A content file has been edited. Please perform a readability analysis.\n\n## Readability Check\n\nAnalyze the content and evaluate:\n\n1. **Sentence Length** - Calculate average sentence length, flag any over 25 words. Target: ≤20 words average.\n\n2. **Paragraph Length** - Count sentences per paragraph, flag >5 sentences. Target: 2-4 sentences.\n\n3. **Passive Voice Detection** - Identify passive constructions, calculate percentage. Target: <10%.\n\n4. **Complex Words** - Flag words with 3+ syllables that have simpler alternatives.\n\n5. **Reading Level Estimate** - Estimate Flesch-Kincaid Grade Level. Target: ≤ Grade 8.\n\n## Output Format\n\nREADABILITY REPORT\n==================\nEstimated Grade Level: [X]\nAverage Sentence Length: [X] words\nPassive Voice: [X]%\nLong Sentences (>25 words): [X]\nLong Paragraphs (>5 sentences): [X]\n\nSTATUS: [PASS/NEEDS IMPROVEMENT]\n\nIf issues found, list specific locations and suggested fixes."
-  }
+  },
+  "enabled": true,
+  "version": "1"
 }

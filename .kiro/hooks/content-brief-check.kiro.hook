@@ -2,7 +2,7 @@
   "name": "Content Brief Compliance",
   "description": "Ensures content follows the approved brief requirements",
   "when": {
-    "type": "fileEdit",
+    "type": "fileEdited",
     "patterns": [
       "content/**/*.md",
       "drafts/**/*.md",
@@ -13,5 +13,7 @@
   "then": {
     "type": "askAgent",
     "prompt": "A content file has been edited. Check brief compliance.\n\n## Brief Check\n\nLook for linked brief in frontmatter or comments, then verify:\n\n1. **Word Count** - Target vs actual (within 10%?)\n\n2. **Structure** - Framework specified followed (AIDA, PAS, How-To)?\n\n3. **Required Elements** - Stats, quotes, examples, links per brief?\n\n4. **Keywords** - Primary and secondary present?\n\n5. **CTA** - Matches brief specification?\n\n## Output Format\n\nBRIEF COMPLIANCE REPORT\n=======================\nBrief: [Linked/Not Found]\n\nWord Count: [target] vs [actual] [✓/⚠]\nStructure: [✓/⚠]\nKeywords: [✓/⚠]\nCTA: [✓/⚠]\n\nMissing elements if any.\n\nSTATUS: [Compliant/Needs Work]\n\nIf no brief: Recommend creating one first."
-  }
+  },
+  "enabled": true,
+  "version": "1"
 }

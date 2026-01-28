@@ -2,7 +2,7 @@
   "name": "SEO Compliance Check",
   "description": "Validates SEO best practices and E-E-A-T signals",
   "when": {
-    "type": "fileEdit",
+    "type": "fileEdited",
     "patterns": [
       "content/**/*.md",
       "drafts/**/*.md",
@@ -13,5 +13,7 @@
   "then": {
     "type": "askAgent",
     "prompt": "A content file has been edited. Perform SEO and E-E-A-T compliance check.\n\n## SEO Check\n\n1. **Title** - H1 present? Character count (target 50-60)? Keyword included?\n\n2. **Heading Structure** - Single H1? H2/H3 hierarchy correct? Descriptive headings?\n\n3. **Keywords** - In first 100 words? In at least one H2? Natural distribution?\n\n4. **Links** - Internal links (target 3-5)? External sources for claims?\n\n## E-E-A-T Signals\n\n- Experience: First-hand language present?\n- Expertise: Author attribution?\n- Authoritativeness: Credible citations?\n- Trustworthiness: Sources for claims?\n\n## Output Format\n\nSEO & E-E-A-T REPORT\n====================\nTitle: [✓/⚠]\nStructure: [✓/⚠]\nLinks: Internal [X], External [X]\nE-E-A-T: [Present/Missing signals]\n\nSTATUS: [PASS/NEEDS IMPROVEMENT]\n\nAction items if needed."
-  }
+  },
+  "enabled": true,
+  "version": "1"
 }

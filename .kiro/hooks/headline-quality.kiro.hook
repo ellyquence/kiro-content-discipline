@@ -2,7 +2,7 @@
   "name": "Headline Quality Check",
   "description": "Evaluates headline effectiveness against best practices",
   "when": {
-    "type": "fileEdit",
+    "type": "fileEdited",
     "patterns": [
       "content/**/*.md",
       "drafts/**/*.md",
@@ -13,5 +13,7 @@
   "then": {
     "type": "askAgent",
     "prompt": "A content file has been edited. Analyze the headline quality.\n\n## Headline Analysis\n\nEvaluate the H1 against:\n\n1. **Technical** - Characters (target 50-60), words (target 6-13)\n\n2. **Scoring** (rate 1-10 each):\n   - Clarity: Immediately understandable?\n   - Specificity: Concrete promise?\n   - Emotion: Creates feeling?\n   - Curiosity: Want to read more?\n   - Benefit: Value clear?\n   - Uniqueness: Stands out?\n\nMinimum score to publish: 35/60\n\n## Output Format\n\nHEADLINE REPORT\n===============\nHeadline: [text]\nCharacters: [X] Words: [X]\n\nScores:\nClarity: /10\nSpecificity: /10\nEmotion: /10\nCuriosity: /10\nBenefit: /10\nUniqueness: /10\nTOTAL: /60\n\nSTATUS: [STRONG 45+/ACCEPTABLE 35-44/NEEDS WORK <35]\n\nSuggested alternatives if score low."
-  }
+  },
+  "enabled": true,
+  "version": "1"
 }
