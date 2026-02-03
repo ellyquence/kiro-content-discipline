@@ -5,6 +5,33 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-02-02
+
+### Added
+- **Reference directory** — `.kiro/reference/` with full examples for on-demand loading
+  - `structure-frameworks-full.md` — Complete AIDA, PAS, BAB, 4Ps, Story Arc, How-To outlines
+  - `headlines-full.md` — All 10 headline formulas + power words + A/B test ideas
+  - `readability-full.md` — Word substitutions, examples, visual rhythm, tools
+  - `seo-eeat-full.md` — Schema markup, search intent alignment, freshness checklist
+- **Archive hook** — `archive-published-spec.kiro.hook` suggests archiving specs when content is published
+- **Archived specs directory** — `.kiro/specs/_archived/` for published content specs
+
+### Changed
+- **Context optimization** — Steering files reduced to ~20-25 lines each using `fileMatchPattern`
+  - `structure-frameworks.md`: 346 → 22 lines (94% reduction)
+  - `headlines.md`: 239 → 24 lines (90% reduction)
+  - `readability.md`: 221 → 22 lines (90% reduction)
+  - `seo-eeat.md`: 201 → 21 lines (90% reduction)
+  - Total steering: ~1400 → ~200 lines
+- **Conditional loading** — Steering files only load for `content/**/*.md` files via `fileMatchPattern`
+- Full examples moved to reference directory (load on demand via `#filename`)
+
+### Why
+- Lower token costs per session
+- Faster Kiro responses
+- Steering only loads when actually needed (conditional inclusion)
+- More context window available for actual content work
+
 ## [1.2.0] - 2026-01-27
 
 ### Added
@@ -75,6 +102,7 @@ Based on best practices from:
 - Orbit Media headline formulas
 - Siteimprove QA framework
 
+[1.3.0]: https://github.com/ellyquence/kiro-content-discipline/releases/tag/v1.3.0
 [1.2.0]: https://github.com/ellyquence/kiro-content-discipline/releases/tag/v1.2.0
 [1.1.0]: https://github.com/ellyquence/kiro-content-discipline/releases/tag/v1.1.0
 [1.0.1]: https://github.com/ellyquence/kiro-content-discipline/releases/tag/v1.0.1
