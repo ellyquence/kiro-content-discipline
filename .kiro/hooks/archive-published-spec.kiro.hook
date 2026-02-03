@@ -2,7 +2,7 @@
   "name": "Archive Published Spec",
   "description": "When content moves to published/, archive the corresponding spec to reduce context load",
   "when": {
-    "type": "fileCreated",
+    "type": "fileCreate",
     "patterns": [
       "content/published/**/*.md"
     ]
