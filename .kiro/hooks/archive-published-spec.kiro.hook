@@ -1,0 +1,16 @@
+{
+  "name": "Archive Published Spec",
+  "description": "When content moves to published/, archive the corresponding spec to reduce context load",
+  "when": {
+    "type": "fileCreated",
+    "patterns": [
+      "content/published/**/*.md"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "A file was added to content/published/. Archive the corresponding spec.\n\n## Steps\n\n1. Extract the slug from the published filename\n2. Find matching spec in .kiro/specs/[slug]/\n3. Move the spec folder to .kiro/specs/_archived/[slug]/\n4. Update content/backlog.md to reflect published status\n5. Confirm archive completed\n\n## Output\n\nARCHIVE COMPLETE\n================\nPublished: [filename]\nSpec archived: .kiro/specs/_archived/[slug]/\nBacklog updated: [yes/no]\n\nIf no matching spec found, note that and continue."
+  },
+  "enabled": true,
+  "version": "1"
+}

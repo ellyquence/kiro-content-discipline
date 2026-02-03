@@ -65,7 +65,7 @@ cd /path/to/your/content-project
 
 ```
 .kiro/
-├── steering/                    # AI behavior rules
+├── steering/                    # AI behavior rules (lean, ~40 lines each)
 │   ├── content-global.md       # Core content philosophy
 │   ├── voice-tone.md           # Voice & tone guidelines
 │   ├── quality-gates.md        # 6-stage quality checkpoints
@@ -74,12 +74,19 @@ cd /path/to/your/content-project
 │   ├── structure-frameworks.md # AIDA, PAS, BAB frameworks
 │   └── headlines.md            # Headline best practices
 │
+├── reference/                   # Full examples (load on demand)
+│   ├── structure-frameworks-full.md  # Complete framework outlines
+│   ├── headlines-full.md            # All formulas + power words
+│   ├── readability-full.md          # Word subs, examples, tools
+│   └── seo-eeat-full.md             # Schema, intent, freshness
+│
 ├── hooks/                       # Automated quality checks
 │   ├── readability-check.kiro.hook      # Grade level validation
 │   ├── voice-consistency.kiro.hook      # Tone drift detection
 │   ├── seo-compliance.kiro.hook         # E-E-A-T checklist
 │   ├── headline-quality.kiro.hook       # Title scoring
-│   └── content-brief-check.kiro.hook    # Brief compliance
+│   ├── content-brief-check.kiro.hook    # Brief compliance
+│   └── auto-archive-specs.kiro.hook     # Archive published specs
 │
 ├── templates/                   # Content templates
 │   ├── content-brief.md        # Strategic content brief
@@ -93,7 +100,8 @@ cd /path/to/your/content-project
 │   └── mcp.json                # MCP server configuration
 │
 └── specs/
-    └── .gitkeep                # Your content specs go here
+    ├── _archived/              # Specs for published content
+    └── .gitkeep                # Your active specs go here
 ```
 
 ## Installation Methods
@@ -174,6 +182,7 @@ cp -r .kiro/settings/* /path/to/project/.kiro/settings/
 | `seo-compliance` | Content file edit | Keywords, headings, links, E-E-A-T |
 | `headline-quality` | Content file edit | 6-criteria scoring, length, clarity |
 | `content-brief-check` | Content file edit | Brief compliance, required elements |
+| `auto-archive-specs` | File added to published/ | Suggests archiving related specs |
 
 ## Customization
 
@@ -221,6 +230,28 @@ fileMatchPattern: "**/technical/**/*.md"
 - API references must be current
 - Screenshots must show latest UI
 ```
+
+## Context Optimization
+
+This pack is optimized for minimal context usage. Steering files are lean (~40 lines each) with rules only. Full examples live in `.kiro/reference/` and load on demand.
+
+### Why This Matters
+
+- **Lower token costs** — Less context loaded each session
+- **Faster responses** — Kiro processes less text
+- **More room for your content** — Context window available for actual work
+
+### Reference Files
+
+When you need full examples, reference them in chat:
+- `#structure-frameworks-full` — Complete AIDA, PAS, BAB outlines
+- `#headlines-full` — All 10 formulas + power words
+- `#readability-full` — Word substitutions, examples, tools
+- `#seo-eeat-full` — Schema markup, intent alignment
+
+### Auto-Archive
+
+The `auto-archive-specs` hook suggests moving specs to `_archived/` when content is published. This keeps active specs lean.
 
 ## Research Sources
 
